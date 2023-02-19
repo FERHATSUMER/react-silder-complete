@@ -1,91 +1,35 @@
+import React, { useState, useEffect } from "react";
 import "./home.css";
-
+import data from "./data";
+import {FaQuoteRight} from 'react-icons/fa';
+import{FiChevronsLeft, FiChevronsRight} from 'react-icons/fi';
 function Home() {
+  const [people, setPeople] = useState(data);
+  const [index, setIndex] = useState(0);
   return (
-    <div className="container">
-      <h1 className="title">
-        <span>/</span> Reviews
-      </h1>
-      <div className="navbar">
-        <div className="slide">
-          <img
-            className="person-img"
-            src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg"
-            alt="maria ferhuson"
-          />
-          <h4>Maria Ferhuson</h4>
-          <p className="job">Office Manager</p>
-          <p className="text">
-            Fingerstache umami squid, kinfolk subway tile selvage tumblr man
-            braid viral kombucha gentrify fanny pack raclette pok pok mustache
-          </p>
-        </div>
+    <section className="section">
+      <div className="title">
+        <h2>
+          <span>/</span>Reviews
+        </h2>
       </div>
-
-      <div className="navbar">
-        <div className="slide">
-          <img
-            className="person-img"
-            src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg"
-            alt="maria ferhuson"
-          />
-          <h4>Maria Ferhuson</h4>
-          <p className="job">Office Manager</p>
-          <p className="text">
-            Fingerstache umami squid, kinfolk subway tile selvage tumblr man
-            braid viral kombucha gentrify fanny pack raclette pok pok mustache
-          </p>
-        </div>
+      <div className="section-center">
+        {people.map((person, personIndex) => {
+          const { id, image, name,title ,quote } = person;
+          return (
+            <article key={id}>
+            <img src={image} alt={name} className="person-img" />
+            <h4>{name}</h4>
+            <p>{title}</p>
+            <p> {quote}</p>
+            <FaQuoteRight className="icon"/>
+            </article>
+          )
+        })}
+        <button><FiChevronsLeft className="prev"/></button>
+        <button><FiChevronsRight className="next"/></button>
       </div>
-
-      <div className="navbar">
-        <div className="slide">
-          <img
-            className="person-img"
-            src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg"
-            alt="maria ferhuson"
-          />
-          <h4>Maria Ferhuson</h4>
-          <p className="job">Office Manager</p>
-          <p className="text">
-            Fingerstache umami squid, kinfolk subway tile selvage tumblr man
-            braid viral kombucha gentrify fanny pack raclette pok pok mustache
-          </p>
-        </div>
-      </div>
-
-      <div className="navbar">
-        <div className="slide">
-          <img
-            className="person-img"
-            src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg"
-            alt="maria ferhuson"
-          />
-          <h4>Maria Ferhuson</h4>
-          <p className="job">Office Manager</p>
-          <p className="text">
-            Fingerstache umami squid, kinfolk subway tile selvage tumblr man
-            braid viral kombucha gentrify fanny pack raclette pok pok mustache
-          </p>
-        </div>
-      </div>
-
-      <div className="navbar">
-        <div className="slide">
-          <img
-            className="person-img"
-            src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg"
-            alt="maria ferhuson"
-          />
-          <h4>Maria Ferhuson</h4>
-          <p className="job">Office Manager</p>
-          <p className="text">
-            Fingerstache umami squid, kinfolk subway tile selvage tumblr man
-            braid viral kombucha gentrify fanny pack raclette pok pok mustache
-          </p>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }
 export default Home;
