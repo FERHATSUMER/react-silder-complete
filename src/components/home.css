@@ -1,8 +1,16 @@
-.container{
-    background-color: #f1f5f8;
+.section{
+    border:3px solid red;
+    width: 45rem;
+    margin: 60px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.title {
+    margin-top: 0px;
+    border:3px solid black;
 
-
+}
 
 .person-img{
     border-radius: 50%;
